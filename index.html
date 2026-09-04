@@ -16,6 +16,7 @@
       boxShadow: { soft: '0 4px 24px -8px rgba(24,39,75,0.12)', lift: '0 20px 60px -20px rgba(24,39,75,0.22)', glow: '0 12px 40px -8px rgba(0,119,250,0.35)' },
     } } }
   </script>
+  <script>try{if(matchMedia('(min-width:1024px) and (pointer:fine)').matches)document.documentElement.classList.add('desk');}catch(e){}</script>
   <style>
     html { scroll-behavior: smooth; }
     body { font-family: 'Pretendard', system-ui, sans-serif; background: #F9F9F9; color: #121212; -webkit-font-smoothing: antialiased; }
@@ -49,6 +50,9 @@
     .change-item { opacity: 0; max-height: 0; margin-top: 0; overflow: hidden; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1), max-height 0.6s ease, margin-top 0.6s ease; }
     .change-item.show { opacity: 1; max-height: 240px; margin-top: 1rem; transform: none; }
     #intro:not(.on) .intro-quote, #intro:not(.on) .change-item { opacity: 1 !important; transform: none !important; max-height: none !important; margin-top: 1rem; }
+    /* desktop: hide intro-dark content before JS pins (prevents quote flash on load) */
+    .desk #intro:not(.on) .intro-quote, .desk #intro:not(.on) .change-item { opacity: 0 !important; }
+    .desk #intro:not(.on) .intro-hero { opacity: 1; }
 
     /* ── PROGRAM focus (pinned, one-by-one black box) ── */
     #program.on .pin-stage { display: flex; align-items: center; justify-content: center; }
@@ -107,7 +111,7 @@
         <a href="#product" class="hover:text-ink-900 transition-colors">제품</a>
         <a href="archive.html" class="hover:text-ink-900 transition-colors">지난 세미나</a>
       </div>
-      <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center gap-1.5 rounded-full bg-ink-900 text-white text-sm font-semibold px-4 py-2">신청하기 <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon></a>
+      <a href="#apply" class="cta inline-flex items-center gap-1.5 rounded-full bg-ink-900 text-white text-sm font-semibold px-4 py-2">신청하기 <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon></a>
     </nav>
   </header>
 
@@ -122,7 +126,7 @@
             <h1 class="kr mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink-900 tracking-tight leading-tight">마음을 잇다,<br>현장의 결을 바꾸다</h1>
             <p class="kr mt-6 text-base sm:text-lg text-ink-500 leading-relaxed max-w-xl">상담의 변화를 눈으로 확인하는 시간. 생체신호 기반 정신건강 평가가 상담 현장에 만드는 변화를, 데이터와 사례로 함께 나눕니다.</p>
             <div class="mt-8 flex flex-col sm:flex-row gap-3">
-              <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-brand text-white font-semibold px-8 py-4 text-lg shadow-glow">무료로 신청하기 <iconify-icon icon="solar:arrow-right-up-linear" width="20"></iconify-icon></a>
+              <a href="#apply" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-brand text-white font-semibold px-8 py-4 text-lg shadow-glow">무료로 신청하기 <iconify-icon icon="solar:arrow-right-up-linear" width="20"></iconify-icon></a>
               <a href="#program" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink-900 font-semibold px-8 py-4 text-lg border border-paper-2 shadow-soft"><iconify-icon icon="solar:play-circle-linear" width="20"></iconify-icon> 프로그램 보기</a>
             </div>
             <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
@@ -233,6 +237,7 @@
               <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">측정 시간 선택</b> — 1·3·5분 중 선택하여 측정</span></li>
               <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">분석 리포트 고도화</b> — 직관적인 리포트로 상담 활용도 극대화</span></li>
             </ul>
+            <a href="https://www.bwaveeeg.com/services/maumgyeol-basic/" target="_blank" rel="noopener" class="cta mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 text-white font-semibold px-6 py-3.5 shadow-soft">마음결 베이직 자세히 보기 <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon></a>
           </div>
         </div>
       </section>
@@ -247,7 +252,11 @@
             <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-brand text-white font-bold px-8 py-4 text-lg shadow-glow"><iconify-icon icon="solar:clipboard-check-bold" width="20"></iconify-icon> 신청서 작성하기</a>
             <a href="tel:0318118430" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink-900 font-semibold px-8 py-4 text-lg border border-paper-2 shadow-soft"><iconify-icon icon="solar:phone-bold" width="18"></iconify-icon> 031-811-8430</a>
           </div>
-          <a href="https://map.naver.com/p/search/강남취창업허브센터" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-1.5 text-sm text-ink-500 hover:text-brand transition-colors"><iconify-icon icon="solar:map-point-linear" width="16"></iconify-icon> 오시는 길 (네이버 지도)</a>
+          <div class="mt-6 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-ink-500">
+            <a href="https://map.naver.com/p/search/강남취창업허브센터" target="_blank" rel="noopener" class="inline-flex items-center gap-2 hover:text-brand transition-colors">오시는 길 <img src="assets/네이버지도_아이콘.png" alt="네이버 지도" class="w-5 h-5 rounded"></a>
+            <span class="w-px h-3.5 bg-paper-2"></span>
+            <a href="https://www.bwaveeeg.com" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 hover:text-brand transition-colors"><iconify-icon icon="solar:global-linear" width="16"></iconify-icon> 비웨이브 웹사이트</a>
+          </div>
         </div>
       </section>
     </div>
@@ -297,7 +306,7 @@
             <li><a href="#program" class="hover:text-white transition-colors">세미나 주요 내용</a></li>
             <li><a href="#product" class="hover:text-white transition-colors">마음결 베이직</a></li>
             <li><a href="archive.html" class="hover:text-white transition-colors">지난 세미나</a></li>
-            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="hover:text-white transition-colors">참가 신청</a></li>
+            <li><a href="#apply" class="hover:text-white transition-colors">참가 신청</a></li>
           </ul>
         </div>
       </div>
@@ -313,6 +322,17 @@
     const ease = (t) => t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
     const mqDesk = matchMedia('(min-width: 1024px) and (pointer: fine)');
 
+    // ── 페이징 속도 (숫자 클수록 그 페이지가 천천히 넘어감. 단위: 화면높이 dvh) ──
+    // 페이지 번호로 조절:
+    //   P1 인트로(히어로→후기→변화)
+    //   P2 세미나항목01  P3 02  P4 03  P5 04  P6 05
+    //   P7 특별프로그램  P8 제품(베이직)  P9 참가신청
+    const PACE = {
+      P1: 380,
+      program: [70, 70, 70, 70, 70], // P2, P3, P4, P5, P6
+      act: [180, 110, 110],          // P7, P8, P9
+    };
+
     // ── INTRO ──
     const introCtl = (function () {
       const intro = document.getElementById('intro');
@@ -320,6 +340,7 @@
       const ibg = intro.querySelector('.intro-bg');
       const hero = intro.querySelector('.intro-hero');
       const quote = intro.querySelector('.intro-quote');
+      const dark = intro.querySelector('.intro-dark');
       const items = Array.from(intro.querySelectorAll('.change-item'));
       const hex = (h) => { h = h.replace('#',''); return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)]; };
       const mix = (a, b, t) => { const A = hex(a), B = hex(b); return 'rgb(' + A.map((v,i) => Math.round(v + (B[i]-v)*t)).join(',') + ')'; };
@@ -332,13 +353,16 @@
         hero.style.opacity = String(1 - hf);
         hero.style.transform = 'translateY(' + (-hf*50) + 'px) scale(' + (1 - hf*0.05) + ')';
         ibg.style.background = mix('#F3F6FB', '#0a0a0a', clamp((p - 0.05) / 0.18));
+        const heroVisible = (1 - hf) > 0.5;
+        hero.style.pointerEvents = heroVisible ? 'auto' : 'none';
+        dark.style.pointerEvents = heroVisible ? 'none' : 'auto';
         quote.classList.toggle('show', p > 0.22);
-        items[0].classList.toggle('show', p > 0.40);
-        items[1].classList.toggle('show', p > 0.56);
-        items[2].classList.toggle('show', p > 0.72);
+        items[0].classList.toggle('show', p > 0.38);
+        items[1].classList.toggle('show', p > 0.54);
+        items[2].classList.toggle('show', p > 0.70);
       }
-      function enable() { if (en) return; en = true; intro.classList.add('on'); intro.style.height = '460dvh'; render(); }
-      function disable() { if (!en) return; en = false; intro.classList.remove('on'); intro.style.height = ''; hero.style.opacity=''; hero.style.transform=''; ibg.style.background=''; }
+      function enable() { if (en) return; en = true; intro.classList.add('on'); intro.style.height = PACE.P1 + 'dvh'; render(); }
+      function disable() { if (!en) return; en = false; intro.classList.remove('on'); intro.style.height = ''; hero.style.opacity=''; hero.style.transform=''; ibg.style.background=''; hero.style.pointerEvents=''; dark.style.pointerEvents=''; }
       return { render, enable, disable };
     })();
 
@@ -348,15 +372,19 @@
       const stage = prog.querySelector('.pin-stage');
       const items = Array.from(prog.querySelectorAll('.prog-item'));
       const N = items.length;
+      const W = PACE.program;                       // 페이지별 길이(P2..P6)
+      const SUM = W.reduce((a, b) => a + b, 0);
+      const bounds = W.reduce((acc, w) => (acc.push(acc[acc.length - 1] + w / SUM), acc), [0]); // 0..1
       let en = false;
       function setIdx(i) { items.forEach((c, k) => c.classList.toggle('active', k === i)); }
       function render() {
         if (!en) return;
         const total = prog.offsetHeight - stage.offsetHeight;
         const p = total > 0 ? clamp(-prog.getBoundingClientRect().top / total) : 0;
-        setIdx(Math.min(N - 1, Math.floor(p * N)));
+        let i = 0; for (let k = 0; k < N; k++) if (p >= bounds[k]) i = k;
+        setIdx(i);
       }
-      function enable() { if (en) return; en = true; prog.classList.add('on'); prog.style.height = (N * 90) + 'dvh'; setIdx(0); render(); }
+      function enable() { if (en) return; en = true; prog.classList.add('on'); prog.style.height = SUM + 'dvh'; setIdx(0); render(); }
       function disable() { if (!en) return; en = false; prog.classList.remove('on'); prog.style.height = ''; items.forEach(c => c.classList.remove('active')); }
       return { render, enable, disable };
     })();
@@ -368,22 +396,25 @@
       const scenes = Array.from(act.querySelectorAll('.act-scene'));
       const tap = document.getElementById('tapCard');
       const N = scenes.length;
+      const W = PACE.act;                            // 페이지별 길이(P7..P9)
+      const SUM = W.reduce((a, b) => a + b, 0);
+      const bounds = W.reduce((acc, w) => (acc.push(acc[acc.length - 1] + w / SUM), acc), [0]); // 0..1, len N+1
+      const FADE = 0.55;                             // 각 씬 후반 45%에서 다음 씬으로 크로스페이드
       let en = false;
       function render() {
         if (!en) return;
         const total = act.offsetHeight - stage.offsetHeight;
         const p = total > 0 ? clamp(-act.getBoundingClientRect().top / total) : 0;
-        const seg = p * (N - 1);
-        let i = Math.floor(seg); if (i > N - 2) i = N - 2; if (i < 0) i = 0;
-        const f = seg - i;
-        const outT = ease(Math.min(f / 0.55, 1));
-        const inT = ease(Math.max((f - 0.45) / 0.55, 0));
-        for (let k = 0; k < N; k++) scenes[k].style.opacity = k === i ? (1 - outT) : (k === i + 1 ? inT : 0);
-        if (p >= 1) for (let k = 0; k < N; k++) scenes[k].style.opacity = k === N - 1 ? 1 : 0;
-        tap.classList.toggle('tapped', i === 0 && f > 0.04 && f < 0.98);
+        let i = 0; for (let k = 0; k < N; k++) if (p >= bounds[k]) i = k;
+        const local = clamp((p - bounds[i]) / (bounds[i + 1] - bounds[i]));
+        let f = 0;
+        if (i < N - 1) { const t = clamp((local - FADE) / (1 - FADE)); f = t; scenes.forEach((s, k) => s.style.opacity = k === i ? (1 - ease(t)) : (k === i + 1 ? ease(t) : 0)); }
+        else scenes.forEach((s, k) => s.style.opacity = k === i ? 1 : 0);
+        scenes.forEach((s) => s.style.pointerEvents = parseFloat(s.style.opacity) > 0.5 ? 'auto' : 'none');
+        tap.classList.toggle('tapped', i === 0 && local > FADE * 0.6 && f < 0.98);
       }
-      function enable() { if (en) return; en = true; act.classList.add('on'); act.style.height = (N * 110) + 'dvh'; scenes.forEach((s, k) => s.style.opacity = k === 0 ? 1 : 0); render(); }
-      function disable() { if (!en) return; en = false; act.classList.remove('on'); act.style.height = ''; scenes.forEach(s => s.style.opacity = ''); tap.classList.remove('tapped'); }
+      function enable() { if (en) return; en = true; act.classList.add('on'); act.style.height = SUM + 'dvh'; scenes.forEach((s, k) => s.style.opacity = k === 0 ? 1 : 0); render(); }
+      function disable() { if (!en) return; en = false; act.classList.remove('on'); act.style.height = ''; scenes.forEach(s => { s.style.opacity = ''; s.style.pointerEvents = ''; }); tap.classList.remove('tapped'); }
       return { render, enable, disable };
     })();
 
@@ -397,6 +428,21 @@
     addEventListener('resize', () => { applyMode(); onScroll(); });
     mqDesk.addEventListener('change', applyMode);
     applyMode();
+
+    // 신청 CTA(nav·히어로·푸터) → 신청 화면(P9)으로 스크롤. 구글폼은 신청 화면 버튼에서만.
+    function scrollToApply() {
+      const act = document.getElementById('act');
+      if (mqDesk.matches && act.classList.contains('on')) {
+        const stage = act.querySelector('.pin-stage');
+        const W = PACE.act, SUM = W.reduce((a, b) => a + b, 0);
+        const startFrac = (W[0] + W[1]) / SUM;
+        const total = act.offsetHeight - stage.offsetHeight;
+        scrollTo({ top: act.offsetTop + Math.min(0.93, (startFrac + 1) / 2) * total, behavior: 'smooth' });
+      } else {
+        document.getElementById('apply').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+    document.querySelectorAll('a[href="#apply"]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); scrollToApply(); }));
 
     // reveal (archive etc.)
     (function () {
