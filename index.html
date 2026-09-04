@@ -66,7 +66,7 @@
 
     /* ── ACT (special → product → apply) crossfade ── */
     #act.on .act-scene { position: absolute; inset: 0; display: flex; align-items: center; opacity: 0; }
-    #act:not(.on) .act-scene { position: relative; opacity: 1 !important; }
+    #act:not(.on) .act-scene { position: relative; opacity: 1 !important; padding: 5rem 0; }
     #act:not(.on) .act-scene + .act-scene { border-top: 1px solid #E7E7E7; }
 
     /* ── Tap animation (마음결 베이직 측정 카드) ── */
@@ -91,6 +91,7 @@
     .mouse-scroll .arrows span:nth-child(3) { animation-delay: 0.36s; }
     @keyframes mouse-pulse { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(12px); } }
     @keyframes fade-arrow { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+    @media (max-width: 1023px), (pointer: coarse) { .mouse-scroll { display: none !important; } }
   </style>
 </head>
 <body class="antialiased">
@@ -104,7 +105,7 @@
   <!-- NAV -->
   <header id="nav" class="fixed top-4 inset-x-0 z-40 px-4">
     <nav class="glass max-w-5xl mx-auto rounded-full px-5 sm:px-6 py-3 flex items-center justify-between">
-      <a href="#top" class="flex items-center gap-2.5 font-bold tracking-tight"><img src="assets/비웨이브_로고.png" alt="BWAVE" class="h-6 w-auto"><span class="text-ink-300 font-light">|</span><span class="text-ink-900 text-[15px]">마음결 세미나</span></a>
+      <a href="#top" class="flex items-center gap-2 sm:gap-2.5 font-bold tracking-tight"><img src="assets/비웨이브_로고.png" alt="BWAVE" class="h-5 sm:h-6 w-auto"><span class="text-ink-300 font-light">|</span><span class="text-ink-900 text-[13px] sm:text-[15px]">마음결 세미나</span></a>
       <div class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-500">
         <a href="#change" class="hover:text-ink-900 transition-colors">현장의 변화</a>
         <a href="#program" class="hover:text-ink-900 transition-colors">세미나 내용</a>
