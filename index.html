@@ -318,6 +318,10 @@
   </footer>
 
   <script>
+    // 새로고침 시 이전 스크롤 위치 복원 방지 → 항상 맨 위(P1)에서 시작 (핀 프레임 고정 버그 방지)
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    scrollTo(0, 0);
+
     const clamp = (v) => Math.max(0, Math.min(1, v));
     const ease = (t) => t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
     const mqDesk = matchMedia('(min-width: 1024px) and (pointer: fine)');
@@ -443,6 +447,9 @@
       }
     }
     document.querySelectorAll('a[href="#apply"]').forEach((a) => a.addEventListener('click', (e) => { e.preventDefault(); scrollToApply(); }));
+
+    // 이미지/폰트 로드 후 레이아웃 변동 대비: 맨 위 재설정 + 프레임 동기화
+    addEventListener('load', () => { scrollTo(0, 0); onScroll(); });
 
     // reveal (archive etc.)
     (function () {
