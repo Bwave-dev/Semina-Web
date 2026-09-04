@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2026 마음결 세미나 | 마음을 잇다, 현장의 결을 바꾸다</title>
+  <meta name="description" content="상담의 변화를 데이터로 확인하는 시간. 생체신호 기반 정신건강 평가 마음결 세미나 — 2026년 9월 17일, 선착순 30명 무료 초대.">
+  <meta property="og:title" content="2026 마음결 세미나 | 마음을 잇다, 현장의 결을 바꾸다">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = { theme: { extend: {
+      fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+      colors: { brand: { DEFAULT: '#0077FA', cyan: '#34C1FD', tint: '#E0ECFD', bg: '#F3F6FB' }, ink: { 900: '#121212', 700: '#2a2a2a', 500: '#717171', 300: '#B8B8B8' }, paper: { 0: '#F9F9F9', 1: '#F3F3F3', 2: '#E7E7E7' } },
+      boxShadow: { soft: '0 4px 24px -8px rgba(24,39,75,0.12)', lift: '0 20px 60px -20px rgba(24,39,75,0.22)', glow: '0 12px 40px -8px rgba(0,119,250,0.35)' },
+    } } }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Pretendard', system-ui, sans-serif; background: #F9F9F9; color: #121212; -webkit-font-smoothing: antialiased; }
+    .kr { word-break: keep-all; }
+    .mesh { background: radial-gradient(60% 50% at 15% 20%, rgba(0,119,250,0.10) 0%, transparent 60%), radial-gradient(50% 50% at 85% 15%, rgba(52,193,253,0.12) 0%, transparent 60%), radial-gradient(60% 60% at 70% 90%, rgba(0,119,250,0.06) 0%, transparent 60%); }
+    .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.6); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 8px 30px -12px rgba(24,39,75,0.18); }
+    .cta { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .cta:hover { transform: translateY(-2px) scale(1.02); }
+    .cta:active { transform: scale(0.98); }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .float { animation: float 6s ease-in-out infinite; }
+    .grain { position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+    .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 70; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, #0077FA, #34C1FD); will-change: transform; }
+    @keyframes progressGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @supports (animation-timeline: scroll()) { .progress { animation: progressGrow linear both; animation-timeline: scroll(root); } }
+    #nav { transition: transform 0.45s cubic-bezier(0.16,1,0.3,1), opacity 0.45s ease; }
+    #nav.nav-hidden { transform: translateY(-160%); opacity: 0; pointer-events: none; }
+
+    /* ── Pinned stage shared ── */
+    .pin.on .pin-stage { position: sticky; top: 0; height: 100dvh; overflow: hidden; }
+    .pin:not(.on) .pin-stage { display: contents; }
+
+    /* ── INTRO ── */
+    .intro-bg { display: none; }
+    #intro.on .intro-bg { display: block; position: absolute; inset: 0; z-index: 0; }
+    #intro.on .intro-hero, #intro.on .intro-dark { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 96px 16px; z-index: 1; }
+    #intro:not(.on) .intro-hero { min-height: 100dvh; display: flex; align-items: center; }
+    #intro:not(.on) .intro-dark { background: #0a0a0a; color: #fff; padding: 6rem 1rem; }
+    .intro-quote { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .intro-quote.show { opacity: 1; transform: none; }
+    .change-item { opacity: 0; max-height: 0; margin-top: 0; overflow: hidden; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.16,1,0.3,1), max-height 0.6s ease, margin-top 0.6s ease; }
+    .change-item.show { opacity: 1; max-height: 240px; margin-top: 1rem; transform: none; }
+    #intro:not(.on) .intro-quote, #intro:not(.on) .change-item { opacity: 1 !important; transform: none !important; max-height: none !important; margin-top: 1rem; }
+
+    /* ── PROGRAM focus (pinned, one-by-one black box) ── */
+    #program.on .pin-stage { display: flex; align-items: center; justify-content: center; }
+    .pi-card { background: #fff; border: 1px solid rgba(231,231,231,0.8); color: #121212; transition: background 0.45s ease, color 0.45s ease, transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s ease, opacity 0.45s ease; }
+    .pi-num { color: #0077FA; transition: color 0.45s; }
+    .pi-desc { color: #717171; transition: color 0.45s; }
+    .prog-item.active .pi-card { background: #121212; border-color: #121212; color: #fff; transform: scale(1.03); box-shadow: 0 24px 60px -20px rgba(0,0,0,0.5); }
+    .prog-item.active .pi-num { color: #34C1FD; }
+    .prog-item.active .pi-desc { color: #B8B8B8; }
+    @media (min-width: 1024px) { #program.on .prog-item:not(.active) .pi-card { opacity: 0.5; } }
+
+    /* ── ACT (special → product → apply) crossfade ── */
+    #act.on .act-scene { position: absolute; inset: 0; display: flex; align-items: center; opacity: 0; }
+    #act:not(.on) .act-scene { position: relative; opacity: 1 !important; }
+    #act:not(.on) .act-scene + .act-scene { border-top: 1px solid #E7E7E7; }
+
+    /* ── Tap animation (마음결 베이직 측정 카드) ── */
+    .tap-ring { position: absolute; top: 44px; left: 44px; width: 44px; height: 44px; margin: -22px 0 0 -22px; border: 2px solid #34C1FD; border-radius: 9999px; opacity: 0; pointer-events: none; }
+    .tap-card.tapped .tap-ring { animation: tapRing 1.3s ease-out infinite; }
+    .tap-card.tapped .tap-finger { animation: tapPress 1.3s ease-in-out infinite; }
+    @keyframes tapRing { 0% { transform: scale(0.4); opacity: 0.6; } 100% { transform: scale(2.6); opacity: 0; } }
+    @keyframes tapPress { 0%, 100% { transform: translateY(0) scale(1); } 45% { transform: translateY(4px) scale(0.9); } }
+
+    .rv { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); will-change: opacity, transform; }
+    .rv.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .float, .mouse-scroll, .rv, .intro-quote, .change-item { animation: none !important; opacity: 1 !important; transform: none !important; max-height: none !important; } }
+
+    .mouse-scroll { position: fixed; left: 50%; bottom: 26px; transform: translateX(-50%); z-index: 45; display: flex; flex-direction: column; align-items: center; gap: 8px; transition: opacity 0.5s ease, transform 0.5s ease; }
+    .mouse-scroll.hide { opacity: 0; transform: translate(-50%, 12px); pointer-events: none; }
+    .mouse-scroll .label { font-size: 11px; font-weight: 600; letter-spacing: 0.18em; color: #717171; }
+    .mouse-scroll .mouse { display: block; width: 26px; height: 40px; border: 2px solid #0077FA; border-radius: 24px; position: relative; }
+    .mouse-scroll .mouse::after { content: ''; position: absolute; top: 7px; left: 50%; width: 3px; height: 7px; margin-left: -1.5px; border-radius: 2px; background: #0077FA; animation: mouse-pulse 1.4s ease infinite; }
+    .mouse-scroll .arrows { display: flex; flex-direction: column; align-items: center; margin-top: 2px; }
+    .mouse-scroll .arrows span { width: 8px; height: 8px; border-right: 2px solid #0077FA; border-bottom: 2px solid #0077FA; transform: rotate(45deg); margin-top: -3px; animation: fade-arrow 1.4s infinite; }
+    .mouse-scroll .arrows span:nth-child(2) { animation-delay: 0.18s; }
+    .mouse-scroll .arrows span:nth-child(3) { animation-delay: 0.36s; }
+    @keyframes mouse-pulse { 0% { opacity: 1; transform: translateY(0); } 100% { opacity: 0; transform: translateY(12px); } }
+    @keyframes fade-arrow { 0%, 100% { opacity: 0.2; } 50% { opacity: 1; } }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="grain"></div>
+  <div class="progress" id="progress"></div>
+
+  <div class="mouse-scroll" id="mouseScroll" aria-hidden="true">
+    <span class="mouse"></span><div class="arrows"><span></span><span></span><span></span></div><span class="label">SCROLL</span>
+  </div>
+
+  <!-- NAV -->
+  <header id="nav" class="fixed top-4 inset-x-0 z-40 px-4">
+    <nav class="glass max-w-5xl mx-auto rounded-full px-5 sm:px-6 py-3 flex items-center justify-between">
+      <a href="#top" class="flex items-center gap-2.5 font-bold tracking-tight"><img src="assets/비웨이브_로고.png" alt="BWAVE" class="h-6 w-auto"><span class="text-ink-300 font-light">|</span><span class="text-ink-900 text-[15px]">마음결 세미나</span></a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-500">
+        <a href="#change" class="hover:text-ink-900 transition-colors">현장의 변화</a>
+        <a href="#program" class="hover:text-ink-900 transition-colors">세미나 내용</a>
+        <a href="#product" class="hover:text-ink-900 transition-colors">제품</a>
+        <a href="archive.html" class="hover:text-ink-900 transition-colors">지난 세미나</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center gap-1.5 rounded-full bg-ink-900 text-white text-sm font-semibold px-4 py-2">신청하기 <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon></a>
+    </nav>
+  </header>
+
+  <!-- ════ INTRO ════ -->
+  <div id="intro" class="pin">
+    <div class="pin-stage">
+      <div class="intro-bg"></div>
+      <div class="intro-hero mesh" id="top">
+        <div class="max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-10 items-center">
+          <div class="lg:col-span-7">
+            <div class="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-tint/60 text-brand px-4 py-1.5 text-sm font-semibold"><span class="w-1.5 h-1.5 rounded-full bg-brand animate-pulse"></span> 2026 마음결 세미나 · 특별 초청</div>
+            <h1 class="kr mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink-900 tracking-tight leading-tight">마음을 잇다,<br>현장의 결을 바꾸다</h1>
+            <p class="kr mt-6 text-base sm:text-lg text-ink-500 leading-relaxed max-w-xl">상담의 변화를 눈으로 확인하는 시간. 생체신호 기반 정신건강 평가가 상담 현장에 만드는 변화를, 데이터와 사례로 함께 나눕니다.</p>
+            <div class="mt-8 flex flex-col sm:flex-row gap-3">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-brand text-white font-semibold px-8 py-4 text-lg shadow-glow">무료로 신청하기 <iconify-icon icon="solar:arrow-right-up-linear" width="20"></iconify-icon></a>
+              <a href="#program" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink-900 font-semibold px-8 py-4 text-lg border border-paper-2 shadow-soft"><iconify-icon icon="solar:play-circle-linear" width="20"></iconify-icon> 프로그램 보기</a>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center gap-x-8 gap-y-3 text-sm">
+              <span class="inline-flex items-center gap-2 text-ink-700 font-medium"><iconify-icon icon="solar:calendar-mark-linear" class="text-brand" width="18"></iconify-icon> 2026.09.17 (목) 10:00–12:00</span>
+              <span class="inline-flex items-center gap-2 text-ink-700 font-medium"><iconify-icon icon="solar:map-point-linear" class="text-brand" width="18"></iconify-icon> 강남취창업허브센터 대강당</span>
+              <span class="inline-flex items-center gap-2 text-ink-700 font-medium"><iconify-icon icon="solar:ticket-linear" class="text-brand" width="18"></iconify-icon> 무료 · 선착순 30명</span>
+            </div>
+          </div>
+          <div class="lg:col-span-5 hidden lg:block">
+            <div class="relative">
+              <div class="glass rounded-3xl p-4 shadow-lift"><div class="flex items-center px-2 pt-1 pb-3"><span class="inline-flex items-center gap-1.5 text-xs text-ink-500"><span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> 개인 리포트 제공</span></div><img src="assets/마음결_리포트.png" alt="마음결 리포트" class="w-full rounded-2xl shadow-soft max-h-[54vh] object-contain" loading="eager" decoding="async"></div>
+              <div class="absolute -top-6 -right-4 glass rounded-2xl px-4 py-2.5 shadow-lift flex items-center gap-2"><span class="text-2xl font-extrabold text-brand">2ch</span><span class="text-xs text-ink-500 kr leading-tight">뇌파<br>측정</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-dark" id="change">
+        <div class="max-w-3xl w-full mx-auto text-center text-white">
+          <div class="intro-quote">
+            <iconify-icon icon="solar:quote-up-square-bold" class="text-brand-cyan mx-auto" width="48"></iconify-icon>
+            <blockquote class="kr mt-5 text-2xl sm:text-3xl lg:text-[2.6rem] font-bold leading-snug tracking-tight">“상담의 변화를 설명할 수 있는<br class="hidden sm:block"> <span class="text-brand-cyan">새로운 언어</span>가 생겼습니다.”</blockquote>
+            <p class="kr mt-4 text-sm text-ink-300">심리상담센터 원장 · 14개월간 마음결 활용</p>
+          </div>
+          <div class="mt-10 space-y-0 text-left">
+            <div class="change-item flex items-start gap-4 rounded-2xl bg-white/5 border border-white/10 p-5"><span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-brand/20 text-brand-cyan"><iconify-icon icon="solar:chart-2-bold" width="24"></iconify-icon></span><div><h3 class="kr text-lg font-bold text-white">상담 효과를 객관적 데이터로 확인</h3><p class="kr mt-1 text-sm text-ink-300 leading-relaxed">뇌파·맥파 지표로 상담 전후 변화를 수치로 기록하고 회기별 추이를 비교합니다.</p></div></div>
+            <div class="change-item flex items-start gap-4 rounded-2xl bg-white/5 border border-white/10 p-5"><span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-brand/20 text-brand-cyan"><iconify-icon icon="solar:hand-heart-bold" width="24"></iconify-icon></span><div><h3 class="kr text-lg font-bold text-white">내담자의 이해도와 신뢰도 향상</h3><p class="kr mt-1 text-sm text-ink-300 leading-relaxed">자신의 상태를 리포트로 확인하며 상담에 더 깊이 몰입합니다.</p></div></div>
+            <div class="change-item flex items-start gap-4 rounded-2xl bg-white/5 border border-white/10 p-5"><span class="shrink-0 grid place-items-center w-12 h-12 rounded-xl bg-brand/20 text-brand-cyan"><iconify-icon icon="solar:refresh-circle-bold" width="24"></iconify-icon></span><div><h3 class="kr text-lg font-bold text-white">재상담률 및 만족도 상승</h3><p class="kr mt-1 text-sm text-ink-300 leading-relaxed">신뢰가 쌓인 관계는 다시 찾아옵니다. 데이터 기반 상담이 지속률을 높입니다.</p></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ PROGRAM (pinned focus) ════ -->
+  <div id="program" class="pin bg-brand-bg">
+    <div class="pin-stage">
+      <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-10 lg:gap-14 items-center py-24 lg:py-16">
+        <!-- LEFT : 제목(위) + 연사(아래) -->
+        <div>
+          <h2 class="kr text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">세미나 주요 내용</h2>
+          <p class="kr mt-3 text-lg text-ink-500 leading-relaxed">정신건강 평가의 오늘과 내일, 그리고 상담 현장의 실제.</p>
+          <div class="mt-8 rounded-3xl bg-white p-5 shadow-lift border border-paper-2/60 flex items-center gap-4">
+            <img src="assets/이승환_교수.png" alt="이승환 교수" class="w-24 sm:w-28 rounded-2xl bg-brand-bg object-cover shrink-0" loading="lazy" decoding="async">
+            <div>
+              <p class="text-xs font-semibold text-brand">특별강연 · 연사</p>
+              <h3 class="text-xl font-bold text-ink-900 mt-0.5">이승환 <span class="text-brand">교수</span></h3>
+              <p class="kr text-sm text-ink-500 mt-0.5">정신건강의학과 전문의</p>
+              <ul class="mt-2 space-y-1 text-xs text-ink-500">
+                <li class="kr flex items-center gap-1.5"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0" width="14"></iconify-icon> (현) 일산백병원 정신과 교수 · 비웨이브(주) CEO</li>
+                <li class="kr flex items-center gap-1.5"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0" width="14"></iconify-icon> (현) 대한불안의학회 이사장 · 대한뇌자극학회 회장</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <!-- RIGHT : 리스트 (흰 배경 → 스크롤 따라 하나씩 검정) -->
+        <div class="space-y-3">
+          <div class="prog-item"><div class="pi-card rounded-2xl p-5 flex items-start gap-4"><span class="pi-num text-xl font-extrabold tabular-nums shrink-0">01</span><div><h3 class="kr text-lg font-bold">대한민국 정신건강 현황과 과제</h3><p class="pi-desc kr text-sm mt-1 leading-relaxed">지금 우리 사회가 마주한 정신건강의 현실과 풀어야 할 과제를 짚습니다.</p></div></div></div>
+          <div class="prog-item"><div class="pi-card rounded-2xl p-5 flex items-start gap-4"><span class="pi-num text-xl font-extrabold tabular-nums shrink-0">02</span><div><h3 class="kr text-lg font-bold">정신건강 평가의 객관화, 왜 필요한가?</h3><p class="pi-desc kr text-sm mt-1 leading-relaxed">주관적 판단을 넘어 데이터로 설명하는 평가가 필요한 이유를 이야기합니다.</p></div></div></div>
+          <div class="prog-item"><div class="pi-card rounded-2xl p-5 flex items-start gap-4"><span class="pi-num text-xl font-extrabold tabular-nums shrink-0">03</span><div><h3 class="kr text-lg font-bold">생체신호 기반 평가의 과학적 근거</h3><p class="pi-desc kr text-sm mt-1 leading-relaxed">뇌파·심박변이도가 마음 상태를 어떻게 드러내는지 과학적으로 풀어냅니다.</p></div></div></div>
+          <div class="prog-item"><div class="pi-card rounded-2xl p-5 flex items-start gap-4"><span class="pi-num text-xl font-extrabold tabular-nums shrink-0">04</span><div><h3 class="kr text-lg font-bold">상담 현장 활용 사례 및 효과</h3><p class="pi-desc kr text-sm mt-1 leading-relaxed">실제 상담 현장에서 마음결이 만든 변화와 효과를 사례로 공유합니다.</p></div></div></div>
+          <div class="prog-item"><div class="pi-card rounded-2xl p-5 flex items-start gap-4"><span class="pi-num text-xl font-extrabold tabular-nums shrink-0">05</span><div><h3 class="kr text-lg font-bold">데이터 기반 상담의 미래</h3><p class="pi-desc kr text-sm mt-1 leading-relaxed">데이터가 상담을 어떻게 바꿔갈지, 그 다음 이야기를 나눕니다.</p></div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════ ACT : 특별프로그램 → (탭) → 제품 → 참가신청 (pinned crossfade) ════ -->
+  <div id="act" class="pin">
+    <div class="pin-stage">
+      <!-- Scene A : 참가자 특별 프로그램 -->
+      <section class="act-scene justify-center" style="background:#F9F9F9">
+        <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="max-w-2xl"><h2 class="kr text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">참가자 특별 프로그램</h2><p class="kr mt-4 text-lg text-ink-500 leading-relaxed">듣기만 하는 세미나가 아닙니다. 직접 경험하고, 나누고, 연결됩니다.</p></div>
+          <div class="mt-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <div id="tapCard" class="tap-card relative rounded-3xl bg-ink-900 p-7 text-white overflow-hidden">
+              <div class="tap-ring"></div>
+              <span class="tap-finger inline-grid place-items-center w-14 h-14 rounded-2xl bg-brand text-white shadow-glow"><iconify-icon icon="solar:hand-shake-bold" width="26"></iconify-icon></span>
+              <h3 class="kr mt-5 text-lg font-bold">마음결 베이직 측정</h3>
+              <p class="kr mt-2 text-sm text-ink-300 leading-relaxed">현장에서 직접 측정하고 개인 리포트를 받아보세요.</p>
+              <span class="mt-5 inline-flex items-center gap-1.5 text-sm font-semibold text-brand-cyan">스크롤하여 자세히 보기 <iconify-icon icon="solar:arrow-down-linear" width="16"></iconify-icon></span>
+            </div>
+            <div class="rounded-3xl bg-brand-bg p-7"><span class="grid place-items-center w-14 h-14 rounded-2xl bg-white text-brand shadow-soft"><iconify-icon icon="solar:case-round-bold" width="26"></iconify-icon></span><h3 class="kr mt-5 text-lg font-bold text-ink-900">상담 현장 활용 사례 공유</h3><p class="kr mt-2 text-sm text-ink-500 leading-relaxed">실제 현장의 생생한 적용 경험을 함께 나눕니다.</p></div>
+            <div class="rounded-3xl bg-brand-bg p-7"><span class="grid place-items-center w-14 h-14 rounded-2xl bg-white text-brand shadow-soft"><iconify-icon icon="solar:chat-round-line-bold" width="26"></iconify-icon></span><h3 class="kr mt-5 text-lg font-bold text-ink-900">전문가와의 질의응답</h3><p class="kr mt-2 text-sm text-ink-500 leading-relaxed">궁금한 점을 연사에게 직접 묻고 답을 얻습니다.</p></div>
+            <div class="rounded-3xl bg-brand-bg p-7"><span class="grid place-items-center w-14 h-14 rounded-2xl bg-white text-brand shadow-soft"><iconify-icon icon="solar:users-group-rounded-bold" width="26"></iconify-icon></span><h3 class="kr mt-5 text-lg font-bold text-ink-900">네트워킹 및 교류의 시간</h3><p class="kr mt-2 text-sm text-ink-500 leading-relaxed">같은 고민을 가진 동료 전문가들과 연결됩니다.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene B : 제품 (업그레이드 베이직) -->
+      <section id="product" class="act-scene justify-center" style="background:#F3F6FB">
+        <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div class="relative rounded-3xl bg-gradient-to-br from-white to-brand-tint/50 p-6 shadow-lift border border-white overflow-hidden order-2 lg:order-1">
+            <div class="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-3 py-1.5 text-xs font-semibold text-brand shadow-soft z-10"><span class="w-1.5 h-1.5 rounded-full bg-brand"></span> 마음결 베이직</div>
+            <img src="assets/마음결베이직_디바이스_블루.png" alt="마음결 베이직 디바이스" class="w-full rounded-2xl max-h-[44vh] object-contain" loading="lazy" decoding="async">
+            <div class="mt-2 grid grid-cols-3 gap-3">
+              <div class="rounded-2xl bg-white p-3 text-center shadow-soft"><p class="text-xl font-extrabold text-brand">2ch</p><p class="text-xs text-ink-500 mt-1 kr">뇌파 측정</p></div>
+              <div class="rounded-2xl bg-white p-3 text-center shadow-soft"><p class="text-xl font-extrabold text-brand">1·3·5</p><p class="text-xs text-ink-500 mt-1 kr">분 선택</p></div>
+              <div class="rounded-2xl bg-white p-3 text-center shadow-soft"><p class="text-xl font-extrabold text-brand">경량</p><p class="text-xs text-ink-500 mt-1 kr">밴드</p></div>
+            </div>
+          </div>
+          <div class="order-1 lg:order-2">
+            <div class="inline-flex items-center gap-2 rounded-full bg-brand-tint/60 text-brand px-4 py-1.5 text-xs font-semibold"><iconify-icon icon="solar:hand-shake-bold" width="14"></iconify-icon> 마음결 베이직 측정</div>
+            <h2 class="kr mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">업그레이드 된<br><span class="text-brand">마음결 베이직</span></h2>
+            <p class="kr mt-4 text-lg text-ink-500 leading-relaxed max-w-lg">상담 현장의 경험을 바탕으로 사용자 편의성과 측정 정확도를 한층 업그레이드했습니다.</p>
+            <ul class="mt-6 space-y-3">
+              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">측정 정확도 향상</b> — 알고리즘 고도화로 정확한 데이터 분석</span></li>
+              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">착용감 &amp; 편의성 개선</b> — 가벼운 착용으로 상담 흐름 방해 없음</span></li>
+              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">측정 시간 선택</b> — 1·3·5분 중 선택하여 측정</span></li>
+              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">분석 리포트 고도화</b> — 직관적인 리포트로 상담 활용도 극대화</span></li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Scene C : 참가 신청 -->
+      <section id="apply" class="act-scene justify-center" style="background:#FFFFFF">
+        <div class="max-w-3xl w-full mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div class="inline-flex items-center gap-2 rounded-full bg-brand-tint/60 text-brand px-4 py-1.5 text-sm font-semibold"><iconify-icon icon="solar:fire-bold" width="16"></iconify-icon> 참가비 무료 · 선착순 30명</div>
+          <h2 class="kr mt-6 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">지금, 현장의 결을<br>바꿀 자리에 함께하세요</h2>
+          <p class="kr mt-5 text-lg text-ink-500 leading-relaxed">2026.09.17 (목) 10:00–12:00 · 강남취창업허브센터 지하2층 대강당</p>
+          <div class="mt-8 flex flex-col sm:flex-row justify-center gap-3">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-brand text-white font-bold px-8 py-4 text-lg shadow-glow"><iconify-icon icon="solar:clipboard-check-bold" width="20"></iconify-icon> 신청서 작성하기</a>
+            <a href="tel:0318118430" class="cta inline-flex items-center justify-center gap-2 rounded-full bg-white text-ink-900 font-semibold px-8 py-4 text-lg border border-paper-2 shadow-soft"><iconify-icon icon="solar:phone-bold" width="18"></iconify-icon> 031-811-8430</a>
+          </div>
+          <a href="https://map.naver.com/p/search/강남취창업허브센터" target="_blank" rel="noopener" class="mt-6 inline-flex items-center gap-1.5 text-sm text-ink-500 hover:text-brand transition-colors"><iconify-icon icon="solar:map-point-linear" width="16"></iconify-icon> 오시는 길 (네이버 지도)</a>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <!-- ARCHIVE (normal scroll) -->
+  <section class="py-24 sm:py-32 bg-brand-bg">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="rv relative overflow-hidden rounded-[2rem] shadow-lift group">
+        <img src="assets/세미나_현장.png" alt="지난 마음결 세미나 현장" class="w-full h-[26rem] object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async">
+        <div class="absolute inset-0 bg-gradient-to-t from-ink-900/90 via-ink-900/40 to-transparent"></div>
+        <div class="absolute inset-0 flex flex-col justify-end p-8 sm:p-12">
+          <h2 class="kr text-3xl sm:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight max-w-2xl">지난 세미나의<br>생생한 현장을 만나보세요</h2>
+          <p class="kr mt-4 text-white/80 text-lg max-w-xl leading-relaxed">현장에서 나눈 발표와 참가자들의 반응, 지난 세미나의 순간들을 아카이브로 확인할 수 있습니다.</p>
+          <a href="archive.html" class="cta mt-7 inline-flex items-center gap-2 rounded-full bg-white text-ink-900 font-bold px-7 py-3.5 text-lg self-start shadow-lift">지난 세미나 보기 <iconify-icon icon="solar:arrow-right-linear" width="20"></iconify-icon></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink-900 text-ink-300 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-12 gap-10">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3"><img src="assets/비웨이브_로고.png" alt="BWAVE" class="h-7 w-auto brightness-0 invert"><span class="text-white font-bold text-lg">비웨이브(주)</span></div>
+          <p class="kr mt-4 text-sm leading-relaxed max-w-sm">정신과 마음이 건강한 사회를 만드는 기업. 뇌파·심박변이도를 AI로 분석하는 디지털 정신건강 케어 플랫폼 ‘마음결’을 만듭니다.</p>
+          <div class="mt-5 flex items-center gap-3">
+            <a href="https://blog.naver.com/bwaveeeg" target="_blank" rel="noopener" aria-label="네이버 블로그" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:notebook-bold" width="20"></iconify-icon></a>
+            <a href="https://www.instagram.com/maumgyeol_/" target="_blank" rel="noopener" aria-label="인스타그램" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:gallery-bold" width="20"></iconify-icon></a>
+            <a href="https://www.youtube.com/@bwave_maumgyeol" target="_blank" rel="noopener" aria-label="유튜브" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:play-bold" width="20"></iconify-icon></a>
+            <a href="https://www.bwaveeeg.com" target="_blank" rel="noopener" aria-label="웹사이트" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:global-bold" width="20"></iconify-icon></a>
+          </div>
+        </div>
+        <div class="md:col-span-4">
+          <p class="text-white font-semibold">문의</p>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li class="flex items-center gap-2.5"><iconify-icon icon="solar:phone-linear" class="text-brand-cyan" width="18"></iconify-icon> 031-811-8430</li>
+            <li class="flex items-center gap-2.5"><iconify-icon icon="solar:letter-linear" class="text-brand-cyan" width="18"></iconify-icon> official@bwaveeeg.com</li>
+            <li class="flex items-start gap-2.5 kr"><iconify-icon icon="solar:map-point-linear" class="text-brand-cyan mt-0.5 shrink-0" width="18"></iconify-icon> 경기도 고양시 일산서구 중앙로 1547, 킨텍스존 빌딩 401호</li>
+          </ul>
+        </div>
+        <div class="md:col-span-3">
+          <p class="text-white font-semibold">세미나</p>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="#change" class="hover:text-white transition-colors">현장의 변화</a></li>
+            <li><a href="#program" class="hover:text-white transition-colors">세미나 주요 내용</a></li>
+            <li><a href="#product" class="hover:text-white transition-colors">마음결 베이직</a></li>
+            <li><a href="archive.html" class="hover:text-white transition-colors">지난 세미나</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="hover:text-white transition-colors">참가 신청</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-xs text-ink-500">
+        <p class="kr">비웨이브(주) · 대표 이승환 · 사업자등록번호 326-87-01450</p>
+        <p>© 2026 BWAVE Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const clamp = (v) => Math.max(0, Math.min(1, v));
+    const ease = (t) => t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t+2, 2)/2;
+    const mqDesk = matchMedia('(min-width: 1024px) and (pointer: fine)');
+
+    // ── INTRO ──
+    const introCtl = (function () {
+      const intro = document.getElementById('intro');
+      const stage = intro.querySelector('.pin-stage');
+      const ibg = intro.querySelector('.intro-bg');
+      const hero = intro.querySelector('.intro-hero');
+      const quote = intro.querySelector('.intro-quote');
+      const items = Array.from(intro.querySelectorAll('.change-item'));
+      const hex = (h) => { h = h.replace('#',''); return [parseInt(h.slice(0,2),16), parseInt(h.slice(2,4),16), parseInt(h.slice(4,6),16)]; };
+      const mix = (a, b, t) => { const A = hex(a), B = hex(b); return 'rgb(' + A.map((v,i) => Math.round(v + (B[i]-v)*t)).join(',') + ')'; };
+      let en = false;
+      function render() {
+        if (!en) return;
+        const total = intro.offsetHeight - stage.offsetHeight;
+        const p = total > 0 ? clamp(-intro.getBoundingClientRect().top / total) : 0;
+        const hf = clamp((p - 0.05) / 0.15);
+        hero.style.opacity = String(1 - hf);
+        hero.style.transform = 'translateY(' + (-hf*50) + 'px) scale(' + (1 - hf*0.05) + ')';
+        ibg.style.background = mix('#F3F6FB', '#0a0a0a', clamp((p - 0.05) / 0.18));
+        quote.classList.toggle('show', p > 0.22);
+        items[0].classList.toggle('show', p > 0.40);
+        items[1].classList.toggle('show', p > 0.56);
+        items[2].classList.toggle('show', p > 0.72);
+      }
+      function enable() { if (en) return; en = true; intro.classList.add('on'); intro.style.height = '460dvh'; render(); }
+      function disable() { if (!en) return; en = false; intro.classList.remove('on'); intro.style.height = ''; hero.style.opacity=''; hero.style.transform=''; ibg.style.background=''; }
+      return { render, enable, disable };
+    })();
+
+    // ── PROGRAM focus (pinned, step 0..4) ──
+    const progCtl = (function () {
+      const prog = document.getElementById('program');
+      const stage = prog.querySelector('.pin-stage');
+      const items = Array.from(prog.querySelectorAll('.prog-item'));
+      const N = items.length;
+      let en = false;
+      function setIdx(i) { items.forEach((c, k) => c.classList.toggle('active', k === i)); }
+      function render() {
+        if (!en) return;
+        const total = prog.offsetHeight - stage.offsetHeight;
+        const p = total > 0 ? clamp(-prog.getBoundingClientRect().top / total) : 0;
+        setIdx(Math.min(N - 1, Math.floor(p * N)));
+      }
+      function enable() { if (en) return; en = true; prog.classList.add('on'); prog.style.height = (N * 90) + 'dvh'; setIdx(0); render(); }
+      function disable() { if (!en) return; en = false; prog.classList.remove('on'); prog.style.height = ''; items.forEach(c => c.classList.remove('active')); }
+      return { render, enable, disable };
+    })();
+
+    // ── ACT : special → product → apply crossfade ──
+    const actCtl = (function () {
+      const act = document.getElementById('act');
+      const stage = act.querySelector('.pin-stage');
+      const scenes = Array.from(act.querySelectorAll('.act-scene'));
+      const tap = document.getElementById('tapCard');
+      const N = scenes.length;
+      let en = false;
+      function render() {
+        if (!en) return;
+        const total = act.offsetHeight - stage.offsetHeight;
+        const p = total > 0 ? clamp(-act.getBoundingClientRect().top / total) : 0;
+        const seg = p * (N - 1);
+        let i = Math.floor(seg); if (i > N - 2) i = N - 2; if (i < 0) i = 0;
+        const f = seg - i;
+        const outT = ease(Math.min(f / 0.55, 1));
+        const inT = ease(Math.max((f - 0.45) / 0.55, 0));
+        for (let k = 0; k < N; k++) scenes[k].style.opacity = k === i ? (1 - outT) : (k === i + 1 ? inT : 0);
+        if (p >= 1) for (let k = 0; k < N; k++) scenes[k].style.opacity = k === N - 1 ? 1 : 0;
+        tap.classList.toggle('tapped', i === 0 && f > 0.04 && f < 0.98);
+      }
+      function enable() { if (en) return; en = true; act.classList.add('on'); act.style.height = (N * 110) + 'dvh'; scenes.forEach((s, k) => s.style.opacity = k === 0 ? 1 : 0); render(); }
+      function disable() { if (!en) return; en = false; act.classList.remove('on'); act.style.height = ''; scenes.forEach(s => s.style.opacity = ''); tap.classList.remove('tapped'); }
+      return { render, enable, disable };
+    })();
+
+    function applyMode() {
+      if (mqDesk.matches) { introCtl.enable(); progCtl.enable(); actCtl.enable(); }
+      else { introCtl.disable(); progCtl.disable(); actCtl.disable(); }
+    }
+    let ticking = false;
+    function onScroll() { if (!ticking) { ticking = true; requestAnimationFrame(() => { ticking = false; introCtl.render(); progCtl.render(); actCtl.render(); }); } }
+    addEventListener('scroll', onScroll, { passive: true });
+    addEventListener('resize', () => { applyMode(); onScroll(); });
+    mqDesk.addEventListener('change', applyMode);
+    applyMode();
+
+    // reveal (archive etc.)
+    (function () {
+      const io = new IntersectionObserver((entries) => { entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.rv').forEach((el) => io.observe(el));
+    })();
+
+    // NAV auto-hide on scroll down
+    (function () {
+      const nav = document.getElementById('nav');
+      let last = 0, t = false;
+      function upd() { t = false; const y = scrollY; if (y > last && y > 120) nav.classList.add('nav-hidden'); else nav.classList.remove('nav-hidden'); last = y; }
+      addEventListener('scroll', () => { if (!t) { t = true; requestAnimationFrame(upd); } }, { passive: true });
+    })();
+
+    // progress fallback
+    if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
+      const bar = document.getElementById('progress'); let t = false;
+      const up = () => { const d = document.documentElement; bar.style.transform = 'scaleX(' + (d.scrollHeight > d.clientHeight ? d.scrollTop / (d.scrollHeight - d.clientHeight) : 0) + ')'; t = false; };
+      addEventListener('scroll', () => { if (!t) { t = true; requestAnimationFrame(up); } }, { passive: true }); up();
+    }
+    const mouse = document.getElementById('mouseScroll');
+    if (mouse) addEventListener('scroll', () => { mouse.classList.toggle('hide', scrollY > 60); }, { passive: true });
+  </script>
+</body>
+</html>

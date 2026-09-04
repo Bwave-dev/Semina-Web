@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>지난 세미나 아카이브 | 마음결 세미나</title>
+  <meta name="description" content="마음결 세미나의 지난 현장 기록. 발표와 참가자들의 순간을 아카이브로 만나보세요.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard', 'system-ui', 'sans-serif'] },
+          colors: {
+            brand: { DEFAULT: '#0077FA', cyan: '#34C1FD', tint: '#E0ECFD', bg: '#F3F6FB' },
+            ink: { 900: '#121212', 700: '#2a2a2a', 500: '#717171', 300: '#B8B8B8' },
+            paper: { 0: '#F9F9F9', 1: '#F3F3F3', 2: '#E7E7E7' },
+          },
+          boxShadow: {
+            soft: '0 4px 24px -8px rgba(24,39,75,0.12)',
+            lift: '0 20px 60px -20px rgba(24,39,75,0.22)',
+            glow: '0 12px 40px -8px rgba(0,119,250,0.35)',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Pretendard', system-ui, sans-serif; background: #F9F9F9; color: #121212; -webkit-font-smoothing: antialiased; }
+    .kr { word-break: keep-all; }
+    .mesh { background: radial-gradient(60% 50% at 15% 20%, rgba(0,119,250,0.10) 0%, transparent 60%), radial-gradient(50% 50% at 85% 15%, rgba(52,193,253,0.12) 0%, transparent 60%); }
+    .glass { background: rgba(255,255,255,0.72); backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px); border: 1px solid rgba(255,255,255,0.6); box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), 0 8px 30px -12px rgba(24,39,75,0.18); }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.in { opacity: 1; transform: translateY(0); }
+    .cta { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .cta:hover { transform: translateY(-2px) scale(1.02); }
+    .cta:active { transform: scale(0.98); }
+    .grain { position: fixed; inset: 0; z-index: 60; pointer-events: none; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
+
+    /* ── Scroll-driven animations ── */
+    .progress { position: fixed; top: 0; left: 0; right: 0; height: 3px; z-index: 70; transform: scaleX(0); transform-origin: 0 50%; background: linear-gradient(90deg, #0077FA, #34C1FD); will-change: transform; }
+    @keyframes progressGrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @keyframes parY { to { transform: translate3d(0, var(--par, -120px), 0); } }
+    @supports (animation-timeline: scroll()) {
+      .progress { animation: progressGrow linear both; animation-timeline: scroll(root); }
+      .par { animation: parY linear both; animation-timeline: scroll(root); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .par { animation: none !important; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="grain"></div>
+  <div class="progress" id="progress"></div>
+
+  <!-- NAV -->
+  <header class="fixed top-4 inset-x-0 z-40 px-4">
+    <nav class="glass max-w-5xl mx-auto rounded-full px-5 sm:px-6 py-3 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-2.5 font-bold tracking-tight">
+        <img src="assets/비웨이브_로고.png" alt="BWAVE" class="h-6 w-auto">
+        <span class="text-ink-300 font-light">|</span>
+        <span class="text-ink-900 text-[15px]">마음결 세미나</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm font-medium text-ink-500">
+        <a href="index.html#change" class="hover:text-ink-900 transition-colors">현장의 변화</a>
+        <a href="index.html#product" class="hover:text-ink-900 transition-colors">제품</a>
+        <a href="index.html#program" class="hover:text-ink-900 transition-colors">프로그램</a>
+        <a href="archive.html" class="text-brand font-semibold">지난 세미나</a>
+      </div>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta inline-flex items-center gap-1.5 rounded-full bg-ink-900 text-white text-sm font-semibold px-4 py-2">
+        신청하기 <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon>
+      </a>
+    </nav>
+  </header>
+
+  <!-- HEADER -->
+  <section class="relative pt-36 pb-16 sm:pt-44 sm:pb-20 mesh overflow-hidden">
+    <div class="absolute -top-10 -right-16 w-[26rem] h-[26rem] rounded-full bg-brand-cyan/15 blur-3xl par" style="--par:140px"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <a href="index.html" class="inline-flex items-center gap-1.5 text-sm font-medium text-ink-500 hover:text-brand transition-colors reveal">
+        <iconify-icon icon="solar:arrow-left-linear" width="16"></iconify-icon> 2026 세미나로 돌아가기
+      </a>
+      <h1 class="kr mt-3 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight reveal" style="transition-delay:80ms">
+        지난 세미나의 <span class="text-brand">기록</span>
+      </h1>
+      <p class="kr mt-5 text-lg text-ink-500 leading-relaxed max-w-2xl reveal" style="transition-delay:160ms">
+        마음결이 상담 현장의 전문가들과 만나온 순간들. 발표와 시연, 그리고 함께 나눈 이야기를 아카이브로 남깁니다.
+      </p>
+    </div>
+  </section>
+
+  <!-- FEATURED -->
+  <section class="pb-20">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal grid lg:grid-cols-2 gap-8 items-center rounded-[2rem] bg-white border border-paper-2/60 p-5 sm:p-6 shadow-soft">
+        <div class="relative rounded-3xl overflow-hidden">
+          <img src="assets/세미나_현장.png" alt="지난 마음결 세미나 발표 현장" class="w-full h-full object-cover aspect-[4/3]" loading="eager" decoding="async">
+          <span class="absolute top-4 left-4 inline-flex items-center gap-1.5 rounded-full bg-brand text-white text-xs font-semibold px-3 py-1.5 shadow-glow">
+            <iconify-icon icon="solar:star-bold" width="14"></iconify-icon> 최근 세미나
+          </span>
+        </div>
+        <div class="p-3 sm:p-6">
+          <div class="flex items-center gap-3 text-sm text-ink-500">
+            <span class="inline-flex items-center gap-1.5"><iconify-icon icon="solar:calendar-linear" class="text-brand" width="16"></iconify-icon> 지난 세미나</span>
+            <span class="w-1 h-1 rounded-full bg-ink-300"></span>
+            <span class="inline-flex items-center gap-1.5"><iconify-icon icon="solar:users-group-rounded-linear" class="text-brand" width="16"></iconify-icon> 상담 전문가 대상</span>
+          </div>
+          <h2 class="kr mt-4 text-2xl sm:text-3xl font-bold text-ink-900 leading-snug">AI 정신건강 증상 유사도 검사, 현장에서 시연하다</h2>
+          <p class="kr mt-4 text-ink-500 leading-relaxed">건강·불안·정서불균형·우울 4개 클래스로 정신건강 상태를 분석하는 신규 서비스를 직접 시연하고, 상담 현장에서의 활용 방안을 함께 논의했습니다.</p>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <span class="kr rounded-full bg-brand-tint/60 text-brand text-sm font-medium px-3.5 py-1.5">생체신호 평가</span>
+            <span class="kr rounded-full bg-brand-tint/60 text-brand text-sm font-medium px-3.5 py-1.5">현장 시연</span>
+            <span class="kr rounded-full bg-brand-tint/60 text-brand text-sm font-medium px-3.5 py-1.5">전문가 네트워킹</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="pb-24 sm:pb-32">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-end justify-between reveal">
+        <h2 class="kr text-2xl sm:text-3xl font-bold tracking-tight">세미나 발자취</h2>
+        <span class="text-sm text-ink-300 kr hidden sm:block">* 이미지는 실제 사진으로 교체 예정</span>
+      </div>
+      <div class="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <article class="reveal group rounded-3xl bg-white border border-paper-2/60 overflow-hidden shadow-soft hover:shadow-lift transition-all">
+          <div class="overflow-hidden">
+            <img src="assets/세미나_현장.png" alt="세미나 발표 현장" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async">
+          </div>
+          <div class="p-6">
+            <p class="text-xs font-semibold text-brand tracking-wide">현장 발표</p>
+            <h3 class="kr mt-2 text-lg font-bold text-ink-900 leading-snug">데이터로 설명하는 상담의 변화</h3>
+            <p class="kr mt-2 text-sm text-ink-500 leading-relaxed">생체신호 기반 평가의 과학적 근거와 상담 현장 적용 사례를 공유했습니다.</p>
+          </div>
+        </article>
+        <article class="reveal group rounded-3xl bg-white border border-paper-2/60 overflow-hidden shadow-soft hover:shadow-lift transition-all" style="transition-delay:80ms">
+          <div class="overflow-hidden">
+            <img src="https://picsum.photos/seed/maumgyeol-seminar-demo/640/420" alt="측정 시연" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async">
+          </div>
+          <div class="p-6">
+            <p class="text-xs font-semibold text-brand tracking-wide">측정 시연</p>
+            <h3 class="kr mt-2 text-lg font-bold text-ink-900 leading-snug">뇌파·맥파 마음건강 측정 체험</h3>
+            <p class="kr mt-2 text-sm text-ink-500 leading-relaxed">참가자들이 직접 측정하고 개인 리포트를 받아보는 체험 세션을 진행했습니다.</p>
+          </div>
+        </article>
+        <article class="reveal group rounded-3xl bg-white border border-paper-2/60 overflow-hidden shadow-soft hover:shadow-lift transition-all" style="transition-delay:160ms">
+          <div class="overflow-hidden">
+            <img src="https://picsum.photos/seed/maumgyeol-seminar-network/640/420" alt="네트워킹" class="w-full h-52 object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" decoding="async">
+          </div>
+          <div class="p-6">
+            <p class="text-xs font-semibold text-brand tracking-wide">네트워킹</p>
+            <h3 class="kr mt-2 text-lg font-bold text-ink-900 leading-snug">전문가 교류의 시간</h3>
+            <p class="kr mt-2 text-sm text-ink-500 leading-relaxed">같은 고민을 가진 상담 전문가들이 모여 경험과 인사이트를 나눴습니다.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA back to current -->
+  <section class="pb-24 sm:pb-32">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="reveal relative overflow-hidden rounded-[2rem] bg-gradient-to-br from-brand to-[#0a5fd0] text-white p-10 sm:p-14 shadow-lift text-center">
+        <div class="absolute -top-16 -right-10 w-72 h-72 rounded-full bg-brand-cyan/30 blur-3xl"></div>
+        <div class="relative">
+          <h2 class="kr text-3xl sm:text-4xl font-bold tracking-tight leading-tight">다음 현장의 주인공은 당신입니다</h2>
+          <p class="kr mt-4 text-white/85 text-lg max-w-xl mx-auto leading-relaxed">2026 마음결 세미나에 참여하고, 상담의 변화를 직접 경험해보세요. 참가비 무료 · 선착순 30명.</p>
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="cta mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-white text-brand font-bold px-8 py-4 text-lg shadow-lift">
+            <iconify-icon icon="solar:clipboard-check-bold" width="20"></iconify-icon> 2026 세미나 신청하기
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-ink-900 text-ink-300 pt-16 pb-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-12 gap-10">
+        <div class="md:col-span-5">
+          <div class="flex items-center gap-3">
+            <img src="assets/비웨이브_로고.png" alt="BWAVE" class="h-7 w-auto brightness-0 invert">
+            <span class="text-white font-bold text-lg">비웨이브(주)</span>
+          </div>
+          <p class="kr mt-4 text-sm leading-relaxed max-w-sm">정신과 마음이 건강한 사회를 만드는 기업. 뇌파·심박변이도를 AI로 분석하는 디지털 정신건강 케어 플랫폼 ‘마음결’을 만듭니다.</p>
+          <div class="mt-5 flex items-center gap-3">
+            <a href="https://blog.naver.com/bwaveeeg" target="_blank" rel="noopener" aria-label="네이버 블로그" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:notebook-bold" width="20"></iconify-icon></a>
+            <a href="https://www.instagram.com/maumgyeol_/" target="_blank" rel="noopener" aria-label="인스타그램" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:gallery-bold" width="20"></iconify-icon></a>
+            <a href="https://www.youtube.com/@bwave_maumgyeol" target="_blank" rel="noopener" aria-label="유튜브" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:play-bold" width="20"></iconify-icon></a>
+            <a href="https://www.bwaveeeg.com" target="_blank" rel="noopener" aria-label="웹사이트" class="grid place-items-center w-10 h-10 rounded-xl bg-white/5 hover:bg-brand transition-colors"><iconify-icon icon="solar:global-bold" width="20"></iconify-icon></a>
+          </div>
+        </div>
+        <div class="md:col-span-4">
+          <p class="text-white font-semibold">문의</p>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li class="flex items-center gap-2.5"><iconify-icon icon="solar:phone-linear" class="text-brand-cyan" width="18"></iconify-icon> 031-811-8430</li>
+            <li class="flex items-center gap-2.5"><iconify-icon icon="solar:letter-linear" class="text-brand-cyan" width="18"></iconify-icon> official@bwaveeeg.com</li>
+            <li class="flex items-start gap-2.5 kr"><iconify-icon icon="solar:map-point-linear" class="text-brand-cyan mt-0.5 shrink-0" width="18"></iconify-icon> 경기도 고양시 일산서구 중앙로 1547, 킨텍스존 빌딩 401호</li>
+          </ul>
+        </div>
+        <div class="md:col-span-3">
+          <p class="text-white font-semibold">세미나</p>
+          <ul class="mt-4 space-y-2.5 text-sm">
+            <li><a href="index.html#change" class="hover:text-white transition-colors">현장의 변화</a></li>
+            <li><a href="index.html#product" class="hover:text-white transition-colors">마음결 베이직</a></li>
+            <li><a href="index.html#program" class="hover:text-white transition-colors">주요 프로그램</a></li>
+            <li><a href="archive.html" class="hover:text-white transition-colors">지난 세미나</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSen9CbRBHHSv_4BZl2qPXYSG-jPgQUSA0ab2gbwSXX_sYqR8Q/viewform" target="_blank" rel="noopener" class="hover:text-white transition-colors">참가 신청</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row justify-between gap-4 text-xs text-ink-500">
+        <p class="kr">비웨이브(주) · 대표 이승환 · 사업자등록번호 326-87-01450</p>
+        <p>© 2026 BWAVE Inc. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+    }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // Scroll progress bar — fallback for browsers without CSS scroll-timeline
+    if (!(window.CSS && CSS.supports && CSS.supports('animation-timeline: scroll()'))) {
+      const bar = document.getElementById('progress');
+      let ticking = false;
+      const update = () => {
+        const d = document.documentElement;
+        const p = d.scrollHeight > d.clientHeight ? d.scrollTop / (d.scrollHeight - d.clientHeight) : 0;
+        bar.style.transform = 'scaleX(' + p + ')';
+        ticking = false;
+      };
+      addEventListener('scroll', () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } }, { passive: true });
+      update();
+    }
+  </script>
+</body>
+</html>
