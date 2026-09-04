@@ -43,7 +43,7 @@
     .intro-bg { display: none; }
     #intro.on .intro-bg { display: block; position: absolute; inset: 0; z-index: 0; }
     #intro.on .intro-hero, #intro.on .intro-dark { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; padding: 96px 16px; z-index: 1; }
-    #intro:not(.on) .intro-hero { min-height: 100dvh; display: flex; align-items: center; }
+    #intro:not(.on) .intro-hero { min-height: 100dvh; display: flex; align-items: center; padding: 6rem 1.25rem 4rem; }
     #intro:not(.on) .intro-dark { background: #0a0a0a; color: #fff; padding: 6rem 1rem; }
     .intro-quote { opacity: 0; transform: translateY(24px); transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1), transform 0.7s cubic-bezier(0.16,1,0.3,1); }
     .intro-quote.show { opacity: 1; transform: none; }
@@ -109,7 +109,7 @@
         <a href="#change" class="hover:text-ink-900 transition-colors">현장의 변화</a>
         <a href="#program" class="hover:text-ink-900 transition-colors">세미나 내용</a>
         <a href="#product" class="hover:text-ink-900 transition-colors">제품</a>
-        <a href="archive.html" class="hover:text-ink-900 transition-colors">지난 세미나</a>
+        <!-- 지난 세미나 임시 숨김: <a href="archive.html" class="hover:text-ink-900 transition-colors">지난 세미나</a> -->
       </div>
       <a href="#apply" class="cta inline-flex items-center gap-1.5 rounded-full bg-ink-900 text-white text-sm font-semibold px-4 py-2">신청하기 <iconify-icon icon="solar:arrow-right-linear" width="16"></iconify-icon></a>
     </nav>
@@ -121,7 +121,7 @@
       <div class="intro-bg"></div>
       <div class="intro-hero mesh" id="top">
         <div class="max-w-7xl w-full mx-auto grid lg:grid-cols-12 gap-10 items-center">
-          <div class="lg:col-span-7">
+          <div class="lg:col-span-9">
             <div class="inline-flex items-center gap-2 rounded-full border border-brand/20 bg-brand-tint/60 text-brand px-4 py-1.5 text-sm font-semibold">2026 마음결 세미나 · 특별 초청</div>
             <h1 class="kr mt-6 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-ink-900 tracking-tight leading-tight">마음을 잇다,<br>현장의 결을 바꾸다</h1>
             <p class="kr mt-6 text-base sm:text-lg text-ink-500 leading-relaxed max-w-xl">상담의 변화를 눈으로 확인하는 시간. 생체신호 기반 정신건강 평가가 상담 현장에 만드는 변화를, 데이터와 사례로 함께 나눕니다.</p>
@@ -135,19 +135,13 @@
               <span class="inline-flex items-center gap-2 text-ink-700 font-medium"><iconify-icon icon="solar:ticket-linear" class="text-brand" width="18"></iconify-icon> 무료 · 선착순 30명</span>
             </div>
           </div>
-          <div class="lg:col-span-5 hidden lg:block">
-            <div class="relative">
-              <div class="glass rounded-3xl p-4 shadow-lift"><img src="assets/마음결_리포트.png" alt="마음결 리포트" class="w-full rounded-2xl shadow-soft max-h-[54vh] object-contain" loading="eager" decoding="async"></div>
-              <div class="absolute -top-6 -right-4 glass rounded-2xl px-4 py-2.5 shadow-lift flex items-center gap-2"><span class="text-2xl font-extrabold text-brand">2ch</span><span class="text-xs text-ink-500 kr leading-tight">뇌파<br>측정</span></div>
-            </div>
-          </div>
         </div>
       </div>
       <div class="intro-dark" id="change">
-        <div class="max-w-3xl w-full mx-auto text-center text-white">
+        <div class="max-w-5xl w-full mx-auto text-center text-white">
           <div class="intro-quote">
             <iconify-icon icon="solar:quote-up-square-bold" class="text-brand-cyan mx-auto" width="48"></iconify-icon>
-            <blockquote class="kr mt-5 text-4xl sm:text-6xl lg:text-7xl font-bold leading-relaxed tracking-wide">“상담의 변화를 설명할 수 있는<br class="hidden sm:block"> <span class="text-brand-cyan">새로운 언어</span>가 생겼습니다.”</blockquote>
+            <blockquote class="kr mt-6 text-3xl sm:text-5xl lg:text-6xl font-bold leading-relaxed tracking-wide text-balance">“상담의 변화를 설명할 수 있는<br class="hidden sm:block"> <span class="text-brand-cyan">새로운 언어</span>가 생겼습니다.”</blockquote>
             <p class="kr mt-4 text-sm text-ink-300">심리상담센터 원장 · 14개월간 마음결 활용</p>
           </div>
           <div class="mt-10 space-y-0 text-left">
@@ -215,36 +209,87 @@
         </div>
       </section>
 
-      <!-- Scene B : 제품 (업그레이드 베이직) -->
+      <!-- Scene B : 제품 (업그레이드 베이직) — 측정 여정 트라이앵글 -->
       <section id="product" class="act-scene justify-center" style="background:#F3F6FB">
-        <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          <div class="relative rounded-3xl bg-gradient-to-br from-white to-brand-tint/50 p-6 shadow-lift border border-white overflow-hidden order-2 lg:order-1">
-            <div class="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full bg-white/80 backdrop-blur px-3 py-1.5 text-xs font-semibold text-brand shadow-soft z-10">링크밴드 · 신규 기기</div>
-            <img src="assets/마음결베이직_디바이스_블루.png" alt="링크밴드 - 마음결 베이직 신규 측정 기기" class="w-full rounded-2xl max-h-[32vh] object-contain" loading="lazy" decoding="async">
-            <div class="mt-3 grid grid-cols-2 gap-3 items-stretch">
-              <div class="relative rounded-2xl bg-ink-900 grid place-items-center shadow-soft overflow-hidden min-h-[18vh]">
-                <div class="text-center px-3">
-                  <iconify-icon icon="solar:play-circle-bold" class="text-brand-cyan" width="36"></iconify-icon>
-                  <p class="kr mt-1.5 text-[11px] leading-snug text-white/90">실제 사용 영상<br><span class="text-white/55">뇌파·맥파 그래프 포함</span></p>
+        <div class="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="text-center">
+            <div class="inline-flex items-center gap-2 rounded-full bg-brand-tint/60 text-brand px-4 py-1.5 text-xs font-semibold"><iconify-icon icon="solar:hand-shake-bold" width="14"></iconify-icon> 마음결 베이직 측정</div>
+            <h2 class="kr mt-5 text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight">업그레이드 된 <span class="text-brand">마음결 베이직</span></h2>
+            <p class="kr mt-4 text-lg text-ink-500 leading-relaxed max-w-xl mx-auto">측정 기기를 착용하고 앱에 연결해 측정하면, 분석 리포트로 결과를 받아봅니다.</p>
+          </div>
+
+          <!-- Desktop: 원 위 세 지점 (삼각 배치) -->
+          <div class="hidden lg:block relative w-[940px] h-[520px] mx-auto mt-10">
+            <svg viewBox="0 0 940 560" class="absolute inset-0 w-full h-full pointer-events-none" fill="none" aria-hidden="true">
+              <defs>
+                <marker id="tri-ah" markerWidth="9" markerHeight="9" refX="4.5" refY="4.5" orient="auto"><path d="M0 0 L9 4.5 L0 9 Z" fill="#7FB0E8"></path></marker>
+              </defs>
+              <circle cx="470" cy="300" r="235" stroke="#CFE0F5" stroke-width="2" stroke-dasharray="4 9"></circle>
+              <path d="M 285 430 A 235 235 0 0 1 470 70" stroke="#9CC2EC" stroke-width="2.5" stroke-dasharray="1 11" stroke-linecap="round" marker-end="url(#tri-ah)"></path>
+              <path d="M 470 70 A 235 235 0 0 1 655 430" stroke="#9CC2EC" stroke-width="2.5" stroke-dasharray="1 11" stroke-linecap="round" marker-end="url(#tri-ah)"></path>
+            </svg>
+
+            <!-- ① 태블릿(측정) : 상단 꼭지점 -->
+            <div class="absolute left-1/2 top-0 -translate-x-1/2 w-[350px] text-center">
+              <div class="rounded-[1.5rem] bg-ink-900 p-2.5 shadow-lift ring-1 ring-black/10">
+                <div class="rounded-xl overflow-hidden bg-black aspect-[720/450]">
+                  <img src="assets/베이직_측정영상.webp" class="w-full h-full object-contain" loading="lazy" decoding="async" alt="마음결 베이직 실측 측정 화면 - 뇌파·맥파 그래프">
                 </div>
               </div>
-              <div class="rounded-2xl bg-white p-2.5 shadow-soft flex flex-col">
-                <img src="assets/마음결_리포트.png" alt="마음결 베이직 분석 리포트" class="w-full flex-1 rounded-xl object-cover" loading="lazy" decoding="async">
-                <p class="kr text-center text-[11px] text-ink-500 mt-1.5">분석 리포트</p>
+              <h3 class="kr mt-4 text-lg font-bold text-ink-900">앱 연결 · 실시간 측정</h3>
+              <p class="kr mt-1 text-sm text-ink-500 max-w-[300px] mx-auto">블루투스로 앱과 연결해 뇌파·맥파를 실시간 측정합니다.</p>
+            </div>
+
+            <!-- ② 측정 기기(착용) : 좌하단 -->
+            <div class="absolute left-[175px] top-[275px] -translate-x-1/2 w-[300px] text-center">
+              <div class="rounded-2xl bg-white p-2.5 shadow-lift ring-1 ring-white">
+                <img src="assets/링크밴드_누끼.png" class="w-full h-[168px] object-contain rounded-lg" loading="lazy" decoding="async" alt="마음결 베이직 2채널 뇌파 측정 기기">
               </div>
+              <h3 class="kr mt-4 text-lg font-bold text-ink-900">측정 기기 착용</h3>
+              <p class="kr mt-1 text-sm text-ink-500">머리에 2채널 뇌파 측정 기기를 착용합니다.</p>
+            </div>
+
+            <!-- ③ 리포트(결과) : 우하단 -->
+            <div class="absolute left-[765px] top-[275px] -translate-x-1/2 w-[300px] text-center">
+              <div class="rounded-2xl bg-white p-2.5 shadow-lift ring-1 ring-white">
+                <img src="assets/마음결_리포트.png" class="w-full h-[168px] object-contain rounded-lg" loading="lazy" decoding="async" alt="마음결 베이직 분석 리포트">
+              </div>
+              <h3 class="kr mt-4 text-lg font-bold text-ink-900">분석 리포트</h3>
+              <p class="kr mt-1 text-sm text-ink-500">측정 결과를 직관적인 리포트로 받아봅니다.</p>
             </div>
           </div>
-          <div class="order-1 lg:order-2">
-            <div class="inline-flex items-center gap-2 rounded-full bg-brand-tint/60 text-brand px-4 py-1.5 text-xs font-semibold"><iconify-icon icon="solar:hand-shake-bold" width="14"></iconify-icon> 마음결 베이직 측정</div>
-            <h2 class="kr mt-4 text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight leading-tight">업그레이드 된<br><span class="text-brand">마음결 베이직</span></h2>
-            <p class="kr mt-4 text-lg text-ink-500 leading-relaxed max-w-lg">상담 현장의 경험을 바탕으로 사용자 편의성과 측정 정확도를 한층 업그레이드했습니다.</p>
-            <ul class="mt-6 space-y-3">
-              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">측정 정확도 향상</b> — 알고리즘 고도화로 정확한 데이터 분석</span></li>
-              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">신규 링크밴드</b> — 한층 가벼워진 착용감으로 상담 흐름 방해 없음</span></li>
-              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">측정 시간 선택</b> — 1·3·5분 중 선택하여 측정</span></li>
-              <li class="kr flex gap-3"><iconify-icon icon="solar:check-circle-bold" class="text-brand shrink-0 mt-0.5" width="22"></iconify-icon><span class="text-ink-700"><b class="text-ink-900">분석 리포트 고도화</b> — 직관적인 리포트로 상담 활용도 극대화</span></li>
-            </ul>
-            <a href="https://www.bwaveeeg.com/services/maumgyeol-basic/" target="_blank" rel="noopener" class="cta mt-8 inline-flex items-center gap-2 rounded-full bg-ink-900 text-white font-semibold px-6 py-3.5 shadow-soft">마음결 베이직 자세히 보기 <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon></a>
+
+          <!-- Mobile/Tablet: 세로 흐름 -->
+          <div class="lg:hidden mt-10 max-w-md mx-auto flex flex-col items-center gap-3">
+            <div class="w-full rounded-3xl bg-white p-5 shadow-lift border border-white text-center">
+              <div class="rounded-xl bg-white p-2.5 shadow-soft ring-1 ring-paper-2">
+                <img src="assets/링크밴드_누끼.png" class="w-full h-[150px] object-contain rounded-lg" loading="lazy" decoding="async" alt="마음결 베이직 2채널 뇌파 측정 기기">
+              </div>
+              <h3 class="kr mt-3 text-lg font-bold text-ink-900">측정 기기 착용</h3>
+              <p class="kr mt-1 text-sm text-ink-500">머리에 2채널 뇌파 측정 기기를 착용합니다.</p>
+            </div>
+            <iconify-icon icon="solar:arrow-down-linear" class="text-brand" width="22"></iconify-icon>
+            <div class="w-full rounded-3xl bg-white p-4 shadow-lift border border-white text-center">
+              <div class="rounded-[1.3rem] bg-ink-900 p-2 shadow-soft">
+                <div class="rounded-lg overflow-hidden bg-black aspect-[720/450]">
+                  <img src="assets/베이직_측정영상.webp" class="w-full h-full object-contain" loading="lazy" decoding="async" alt="마음결 베이직 실측 측정 화면 - 뇌파·맥파 그래프">
+                </div>
+              </div>
+              <h3 class="kr mt-3 text-lg font-bold text-ink-900">앱 연결 · 실시간 측정</h3>
+              <p class="kr mt-1 text-sm text-ink-500">블루투스로 앱과 연결해 뇌파·맥파를 실시간 측정합니다.</p>
+            </div>
+            <iconify-icon icon="solar:arrow-down-linear" class="text-brand" width="22"></iconify-icon>
+            <div class="w-full rounded-3xl bg-white p-5 shadow-lift border border-white text-center">
+              <div class="rounded-xl bg-white p-2.5 shadow-soft ring-1 ring-paper-2">
+                <img src="assets/마음결_리포트.png" class="w-full h-[150px] object-contain rounded-lg" loading="lazy" decoding="async" alt="마음결 베이직 분석 리포트">
+              </div>
+              <h3 class="kr mt-3 text-lg font-bold text-ink-900">분석 리포트</h3>
+              <p class="kr mt-1 text-sm text-ink-500">측정 결과를 직관적인 리포트로 받아봅니다.</p>
+            </div>
+          </div>
+
+          <div class="mt-8 lg:mt-8 text-center">
+            <a href="https://www.bwaveeeg.com/services/maumgyeol-basic/" target="_blank" rel="noopener" class="cta inline-flex items-center gap-2 rounded-full bg-ink-900 text-white font-semibold px-6 py-3.5 shadow-soft">마음결 베이직 자세히 보기 <iconify-icon icon="solar:arrow-right-up-linear" width="18"></iconify-icon></a>
           </div>
         </div>
       </section>
@@ -269,7 +314,7 @@
     </div>
   </div>
 
-  <!-- ARCHIVE (normal scroll) -->
+  <!-- ARCHIVE (지난 세미나) — 임시 숨김. 나중에 이 블록 주석만 해제하면 그대로 복원됨.
   <section class="py-24 sm:py-32 bg-brand-bg">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="rv relative overflow-hidden rounded-[2rem] shadow-lift group">
@@ -283,6 +328,7 @@
       </div>
     </div>
   </section>
+  -->
 
   <!-- FOOTER -->
   <footer class="bg-ink-900 text-ink-300 pt-16 pb-10">
@@ -312,7 +358,7 @@
             <li><a href="#change" class="hover:text-white transition-colors">현장의 변화</a></li>
             <li><a href="#program" class="hover:text-white transition-colors">세미나 주요 내용</a></li>
             <li><a href="#product" class="hover:text-white transition-colors">마음결 베이직</a></li>
-            <li><a href="archive.html" class="hover:text-white transition-colors">지난 세미나</a></li>
+            <!-- 지난 세미나 임시 숨김: <li><a href="archive.html" class="hover:text-white transition-colors">지난 세미나</a></li> -->
             <li><a href="#apply" class="hover:text-white transition-colors">참가 신청</a></li>
           </ul>
         </div>
@@ -341,7 +387,7 @@
     const PACE = {
       P1: 380,
       program: [70, 70, 70, 70, 70], // P2, P3, P4, P5, P6
-      act: [180, 110, 55],           // P7, P8, P9
+      act: [180, 120, 55],           // P7 특별, P8 제품, P9 신청
     };
 
     // ── INTRO ──
@@ -446,7 +492,7 @@
       if (mqDesk.matches && act.classList.contains('on')) {
         const stage = act.querySelector('.pin-stage');
         const W = PACE.act, SUM = W.reduce((a, b) => a + b, 0);
-        const startFrac = (W[0] + W[1]) / SUM;
+        const startFrac = (SUM - W[W.length - 1]) / SUM;
         const total = act.offsetHeight - stage.offsetHeight;
         scrollTo({ top: act.offsetTop + Math.min(0.93, (startFrac + 1) / 2) * total, behavior: 'smooth' });
       } else {
